@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Naveen Kumar M — Data Science & Analytics portfolio. Python, SQL, Machine Learning, Power BI and AI application development.">
+<meta name="theme-color" content="#050b16">
+<title>Naveen Kumar M | Data Science & Analytics</title>
+
+<!-- Fonts + icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+<style>
+:root{
+  --bg:#030711; --bg2:#071222; --panel:rgba(10,23,42,.72);
+  --line:rgba(88,166,255,.18); --blue:#2188ff; --cyan:#23d5ff;
+  --text:#edf6ff; --muted:#8ea3ba; --success:#4ade80;
+  --shadow:0 25px 70px rgba(0,0,0,.38); --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:var(--text);background:
+radial-gradient(circle at 15% 10%,rgba(33,136,255,.13),transparent 28%),
+radial-gradient(circle at 85% 18%,rgba(35,213,255,.09),transparent 25%),var(--bg);
+overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.navbar{position:fixed;z-index:100;top:14px;left:50%;transform:translateX(-50%);width:min(1160px,94%);
+padding:12px 16px;border:1px solid var(--line);background:rgba(3,7,17,.72);backdrop-filter:blur(18px);
+border-radius:18px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.brand{font-family:"Space Grotesk";font-weight:700;letter-spacing:.5px}.brand span{color:var(--cyan)}
+.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{font-size:13px;color:#b7c8da;transition:.25s}.navlinks a:hover{color:white}
+.menu{display:none;background:none;border:0;color:white;font-size:20px}
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;padding:130px 0 80px;overflow:hidden}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:50px 50px;mask-image:linear-gradient(to bottom,black,transparent)}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}.orb.one{width:420px;height:420px;background:rgba(33,136,255,.08);top:5%;left:-10%}.orb.two{width:350px;height:350px;background:rgba(35,213,255,.07);right:-8%;bottom:8%}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);background:rgba(33,136,255,.07);padding:8px 13px;border-radius:99px;color:#9fdfff;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 15px var(--success);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+h1{font-family:"Space Grotesk";font-size:clamp(45px,7vw,82px);line-height:.95;margin:22px 0 14px;letter-spacing:-3px}
+h1 .blue{background:linear-gradient(90deg,#fff,#62dfff,#368cff);-webkit-background-clip:text;color:transparent}
+.hero-role{font-size:clamp(19px,2.3vw,28px);font-weight:700;color:#cce9ff;margin-bottom:18px}
+.hero p{max-width:680px;color:var(--muted);font-size:16px;line-height:1.8}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 17px;border-radius:13px;border:1px solid var(--line);font-weight:700;font-size:13px;transition:.25s;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,#1474ef,#20c8ff);color:white;box-shadow:0 10px 35px rgba(33,136,255,.22)}
+.btn.secondary{background:rgba(255,255,255,.035)}.btn:hover{transform:translateY(-3px);border-color:rgba(35,213,255,.5)}
+.profile-wrap{display:flex;justify-content:center}.profile-card{width:min(390px,100%);aspect-ratio:1/1.05;border-radius:32px;border:1px solid rgba(80,178,255,.25);background:linear-gradient(145deg,rgba(18,42,71,.78),rgba(5,12,24,.65));box-shadow:0 0 70px rgba(33,136,255,.12),var(--shadow);position:relative;overflow:hidden;padding:22px}
+.profile-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(35,213,255,.15);filter:blur(35px);top:-50px;right:-30px}
+.profile-avatar{height:72%;border-radius:23px;border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;position:relative;overflow:hidden;background:
+radial-gradient(circle at 50% 35%,rgba(35,213,255,.22),transparent 35%),linear-gradient(145deg,#0c1e35,#040a13)}
+.avatar-ring{width:150px;height:150px;border-radius:50%;border:1px solid rgba(35,213,255,.4);box-shadow:0 0 50px rgba(35,213,255,.12);display:grid;place-items:center}
+.avatar-ring i{font-size:58px;color:#8eeaff}
+.profile-placeholder{position:absolute;bottom:14px;left:14px;right:14px;padding:10px 12px;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);font-size:11px;color:#a9bed2;text-align:center}
+.profile-meta{display:flex;justify-content:space-between;margin-top:15px;font-size:12px;color:#9fb3c8}.profile-meta strong{color:white;display:block;margin-top:4px}
+.section{padding:105px 0}.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:35px}
+.kicker{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h2{font-family:"Space Grotesk";font-size:clamp(32px,4vw,48px);letter-spacing:-1.5px;margin-top:7px}
+.section-head p{max-width:540px;color:var(--muted);line-height:1.7;font-size:14px}
+.glass{border:1px solid var(--line);background:linear-gradient(145deg,rgba(13,30,53,.74),rgba(5,13,25,.64));backdrop-filter:blur(15px);border-radius:var(--radius);box-shadow:var(--shadow)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.about-card{padding:30px}.about-card p{color:#9fb1c5;line-height:1.85;font-size:14px}.about-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}.point{padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:15px;background:rgba(255,255,255,.025)}.point i{color:var(--cyan);margin-bottom:9px}.point b{font-size:13px;display:block}.point span{font-size:11px;color:var(--muted)}
+.skills-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.skill-group{padding:22px}.skill-group h3{font-size:14px;margin-bottom:16px;color:#dff5ff}.skill{margin:13px 0}.skill-top{display:flex;justify-content:space-between;font-size:11px;color:#b8c8d8;margin-bottom:7px}.bar{height:5px;background:#142337;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:99px;box-shadow:0 0 13px rgba(35,213,255,.35)}
+.dashboard{padding:24px}.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.live{font-size:11px;color:#9deeb6}.live:before{content:"";display:inline-block;width:6px;height:6px;background:#45e981;border-radius:50%;margin-right:6px;box-shadow:0 0 10px #45e981}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.kpi{padding:18px;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.025)}.kpi small{color:#839ab2;font-size:10px}.kpi strong{display:block;font:700 27px "Space Grotesk";margin-top:6px}.kpi em{font-style:normal;color:#4ade80;font-size:10px}.charts{display:grid;grid-template-columns:1.45fr 1fr;gap:15px;margin-top:15px}.chart-card{padding:18px;height:315px}.chart-card h3{font-size:12px;margin-bottom:10px;color:#c8d8e7}.chart-box{height:260px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{overflow:hidden;transition:.3s}.project:hover{transform:translateY(-5px);border-color:rgba(35,213,255,.35)}.project-img{height:190px;background:radial-gradient(circle at 25% 30%,rgba(35,213,255,.25),transparent 35%),linear-gradient(135deg,#0d2541,#06101d);position:relative;display:grid;place-items:center;overflow:hidden}.project-img:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:26px 26px}.project-img i{font-size:48px;color:#8beaff;z-index:1;filter:drop-shadow(0 0 18px rgba(35,213,255,.45))}.project-body{padding:23px}.project-body h3{font-size:19px;font-family:"Space Grotesk"}.project-body p{font-size:12px;line-height:1.75;color:var(--muted);margin:10px 0 14px}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}.tag{font-size:10px;padding:6px 8px;border-radius:8px;color:#a9ddff;background:rgba(33,136,255,.08);border:1px solid rgba(33,136,255,.14)}.project-actions{display:flex;gap:8px}.mini{padding:9px 11px;font-size:11px}
+.timeline{position:relative;margin-left:8px}.timeline:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--blue),transparent)}.event{position:relative;padding-left:35px;margin-bottom:28px}.dot{position:absolute;left:2px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px rgba(35,213,255,.7)}.event-card{padding:20px}.event-card small{color:var(--cyan);font-size:10px;font-weight:700}.event-card h3{margin:7px 0;font-size:16px}.event-card p{font-size:12px;color:var(--muted);line-height:1.7}
+.achievements{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.stat{text-align:center;padding:28px}.stat strong{font:700 38px "Space Grotesk";display:block;background:linear-gradient(90deg,#fff,var(--cyan));-webkit-background-clip:text;color:transparent}.stat span{color:#8ea4b9;font-size:11px}
+.resume-grid{display:grid;grid-template-columns:1fr .8fr;gap:20px;align-items:stretch}.resume-preview{padding:24px;min-height:420px}.paper{height:100%;min-height:370px;background:#f7fbff;color:#172334;border-radius:7px;padding:24px;box-shadow:0 20px 40px rgba(0,0,0,.25)}.paper h3{font-family:"Space Grotesk";font-size:24px}.paper .line{height:7px;width:50%;background:#dceaf5;margin:8px 0 20px}.paper h4{font-size:10px;margin:14px 0 6px;color:#1778b7}.paper p{font-size:8px;line-height:1.7;color:#526274}.resume-copy{padding:30px;display:flex;flex-direction:column;justify-content:center}.resume-copy p{color:var(--muted);line-height:1.8;font-size:14px;margin:15px 0 24px}
+.github-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:20px}.github-profile{padding:28px}.github-icon{font-size:45px;margin-bottom:18px}.github-profile h3{font-family:"Space Grotesk";font-size:24px}.github-profile p{color:var(--muted);font-size:12px;line-height:1.7;margin:10px 0 20px}.repo-list{display:grid;grid-template-columns:1fr 1fr;gap:13px}.repo{padding:19px}.repo h4{font-size:13px}.repo p{font-size:10px;color:var(--muted);line-height:1.6;margin:8px 0}.repo span{font-size:9px;color:#78dfff}
+.contact-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:20px}.contact-info,.form{padding:28px}.contact-info p{color:var(--muted);font-size:13px;line-height:1.8;margin:12px 0 25px}.contact-item{display:flex;gap:13px;align-items:center;margin:16px 0;color:#b6c7d8;font-size:12px}.contact-item i{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--cyan)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{margin-bottom:13px}.field label{font-size:10px;color:#90a5ba;display:block;margin-bottom:7px}.field input,.field textarea{width:100%;padding:13px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025);color:white;border-radius:11px;outline:none}.field input:focus,.field textarea:focus{border-color:rgba(35,213,255,.5)}textarea{min-height:130px;resize:vertical}.full{grid-column:1/-1}
+footer{padding:30px 0;border-top:1px solid rgba(255,255,255,.07);color:#7f94aa}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-title{font-family:"Space Grotesk";font-weight:700;color:#dff6ff}.socials{display:flex;gap:9px}.socials a{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:#9fdfff}.copyright{font-size:10px;margin-top:8px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:950px){.hero-grid,.about-grid,.resume-grid,.github-grid,.contact-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:repeat(2,1fr)}.profile-wrap{order:-1}.profile-card{max-width:330px}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.navbar{top:8px}.navlinks{display:none;position:absolute;top:58px;left:0;right:0;padding:16px;flex-direction:column;background:rgba(3,7,17,.96);border:1px solid var(--line);border-radius:15px}.navlinks.open{display:flex}.menu{display:block}.hero{padding-top:110px}.hero-grid{gap:30px}h1{letter-spacing:-2px}.section{padding:75px 0}.section-head{display:block}.section-head p{margin-top:14px}.skills-grid,.projects,.achievements,.repo-list,.charts{grid-template-columns:1fr}.charts .chart-card{height:290px}.chart-box{height:235px}.form-grid{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start}}
+.profile-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  border: 2px solid #00ff9c; /* change to match your accent colour */
+  box-shadow: 0 0 25px rgba(0, 255, 156, 0.35);
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar">
+  <a class="brand" href="#home">NAVEEN<span>.</span>KM</a>
+  <div class="navlinks" id="navlinks">
+    <a href="#about">About</a><a href="#skills">Skills</a><a href="#dashboard">Dashboard</a>
+    <a href="#projects">Projects</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+  </div>
+  <button class="menu" id="menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<header class="hero" id="home">
+  <div class="grid-bg"></div><div class="orb one"></div><div class="orb two"></div>
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="pulse"></span> Available for opportunities</div>
+      <h1>Hi, I'm <span class="blue">Naveen Kumar M</span></h1>
+      <div class="hero-role">Data Science &amp; Analytics</div>
+      <p>Data-driven problem solver focused on Python, SQL, machine learning, business intelligence, and AI application development. I build intelligent data-driven applications, interactive dashboards, predictive models, and modern analytics solutions.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects"><i class="fa-solid fa-arrow-down"></i> View My Projects</a>
+        <a class="btn secondary" href="Naveen_Kumar_M_Resume.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+        <a class="btn secondary" href="#contact"><i class="fa-regular fa-paper-plane"></i> Contact Me</a>
+      </div>
+    </div>
+    <div class="profile-wrap reveal">
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <div class="avatar-ring"><i class="fa-solid fa-user-tie"></i></div>
+          <div class="profile-placeholder"><img src="naveen.jpg" alt="Naveen Kumar M" class="profile-photo"></div>
+        </div>
+        <div class="profile-meta"><div>ROLE<strong>Data Scientist / Python Developer</strong></div><div>STACK<strong>Python · SQL · ML · BI</strong></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">01 · About</div><h2>Data with a purpose.</h2></div><p>A concise recruiter-focused profile built from the information in my resume.</p></div>
+  <div class="about-grid">
+    <div class="glass about-card reveal">
+      <p>I am a Bachelor of Computer Science graduate with hands-on experience building machine learning models, business intelligence dashboards, desktop applications, and AI-powered automation projects. My core toolkit includes Python, SQL, Power BI, Pandas, Scikit-learn, Tkinter, and SQLite.</p>
+      <div class="about-points">
+        <div class="point"><i class="fa-brands fa-python"></i><b>Python Development</b><span>Applications, automation &amp; ML</span></div>
+        <div class="point"><i class="fa-solid fa-database"></i><b>SQL &amp; Data</b><span>Querying and data management</span></div>
+        <div class="point"><i class="fa-solid fa-brain"></i><b>Machine Learning</b><span>Regression, classification, clustering</span></div>
+        <div class="point"><i class="fa-solid fa-chart-line"></i><b>Analytics</b><span>Power BI &amp; visual storytelling</span></div>
+      </div>
+    </div>
+    <div class="glass about-card reveal">
+      <div class="kicker">Profile snapshot</div>
+      <div style="margin-top:20px">
+        <div class="point" style="margin-bottom:11px"><b>Bachelor of Computer Science</b><span>Muthayammal College of Arts and Science · 2022–2025</span></div>
+        <div class="point" style="margin-bottom:11px"><b>Data Science Nanodegree</b><span>Imagecon Academy Pvt Ltd · Industrial projects &amp; assessments</span></div>
+        <div class="point"><b>Focus Areas</b><span>Data Science · Python · SQL · ML · Power BI · AI Applications</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="skills">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">02 · Skills</div><h2>My technical stack.</h2></div><p>Organized by the way I use technology to move from raw data to useful software.</p></div>
+  <div class="skills-grid">
+    <div class="glass skill-group reveal"><h3>Programming</h3>
+      <div class="skill"><div class="skill-top"><span>Python</span><span>90%</span></div><div class="bar"><i style="--w:90%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>SQL</span><span>82%</span></div><div class="bar"><i style="--w:82%"></i></div></div>
+    </div>
+    <div class="glass skill-group reveal"><h3>Data Analytics</h3>
+      <div class="skill"><div class="skill-top"><span>Pandas</span><span>86%</span></div><div class="bar"><i style="--w:86%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>NumPy</span><span>78%</span></div><div class="bar"><i style="--w:78%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>SQLite</span><span>76%</span></div><div class="bar"><i style="--w:76%"></i></div></div>
+    </div>
+    <div class="glass skill-group reveal"><h3>Machine Learning</h3>
+      <div class="skill"><div class="skill-top"><span>Scikit-learn</span><span>84%</span></div><div class="bar"><i style="--w:84%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>Regression</span><span>82%</span></div><div class="bar"><i style="--w:82%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>Classification</span><span>80%</span></div><div class="bar"><i style="--w:80%"></i></div></div>
+    </div>
+    <div class="glass skill-group reveal"><h3>Visualization</h3>
+      <div class="skill"><div class="skill-top"><span>Power BI</span><span>86%</span></div><div class="bar"><i style="--w:86%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>Matplotlib</span><span>78%</span></div><div class="bar"><i style="--w:78%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>Plotly</span><span>75%</span></div><div class="bar"><i style="--w:75%"></i></div></div>
+    </div>
+    <div class="glass skill-group reveal"><h3>Development Tools</h3>
+      <div class="skill"><div class="skill-top"><span>Streamlit</span><span>82%</span></div><div class="bar"><i style="--w:82%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>Git &amp; GitHub</span><span>78%</span></div><div class="bar"><i style="--w:78%"></i></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="dashboard">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">03 · Live Analytics</div><h2>Data science cockpit.</h2></div><p>A front-end simulation of a live analytics workspace with animated KPIs and interactive Chart.js visualizations.</p></div>
+  <div class="glass dashboard reveal">
+    <div class="dash-top"><div><b>Analytics Control Center</b><div style="color:#6f849a;font-size:10px;margin-top:5px">Portfolio telemetry · simulated live stream</div></div><div class="live">LIVE DATA STREAM</div></div>
+    <div class="kpis">
+      <div class="kpi"><small>DATA PROCESSED</small><strong class="counter" data-target="12840">0</strong><em>+18.4%</em></div>
+      <div class="kpi"><small>MODEL ACCURACY</small><strong class="counter" data-target="94.7" data-decimal="1">0</strong><em>% evaluation</em></div>
+      <div class="kpi"><small>PREDICTIONS</small><strong class="counter" data-target="2846">0</strong><em>+12.8%</em></div>
+      <div class="kpi"><small>PIPELINE STATUS</small><strong style="font-size:20px">READY</strong><em>All systems operational</em></div>
+    </div>
+    <div class="charts">
+      <div class="glass chart-card"><h3>Prediction / Processing Trend</h3><div class="chart-box"><canvas id="lineChart"></canvas></div></div>
+      <div class="glass chart-card"><h3>Model Portfolio Mix</h3><div class="chart-box"><canvas id="doughnutChart"></canvas></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="projects">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">04 · Projects</div><h2>Built, tested, presented.</h2></div><p>Selected portfolio projects spanning predictive modeling, BI, desktop software and AI automation.</p></div>
+  <div class="projects">
+    <article class="glass project reveal"><div class="project-img"><i class="fa-solid fa-house-chimney"></i></div><div class="project-body"><h3>Housing Price Prediction</h3><p>Predictive modeling workflow with preprocessing, feature selection, outlier handling, Linear Regression training, and evaluation using MSE and R².</p><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Linear Regression</span></div><div class="project-actions"><a class="btn mini secondary" href="https://github.com/naveenkumarm200505-max" target="_blank">GitHub</a><a class="btn mini secondary" href="#dashboard">Live Demo</a><a class="btn mini primary" href="#contact">View Project</a></div></div></article>
+    <article class="glass project reveal"><div class="project-img"><i class="fa-solid fa-brain"></i></div><div class="project-body"><h3>AI Powered Smart Predictive Analytics Studio</h3><p>Interactive analytics studio concept covering data upload, EDA, preprocessing, supervised and unsupervised learning, evaluation, prediction and visual analytics.</p><div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Plotly</span></div><div class="project-actions"><a class="btn mini secondary" href="https://github.com/naveenkumarm200505-max" target="_blank">GitHub</a><a class="btn mini secondary" href="#dashboard">Live Demo</a><a class="btn mini primary" href="#contact">View Project</a></div></div></article>
+    <article class="glass project reveal"><div class="project-img"><i class="fa-solid fa-chart-column"></i></div><div class="project-body"><h3>Amazon E-commerce Sales Dashboard</h3><p>Power BI dashboard using DAX and Power Query to track revenue, orders, return rate, regional trends and product-category performance across 10,000+ rows.</p><div class="tags"><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">DAX</span><span class="tag">Power Query</span></div><div class="project-actions"><a class="btn mini secondary" href="https://github.com/naveenkumarm200505-max" target="_blank">GitHub</a><a class="btn mini secondary" href="#dashboard">Live Demo</a><a class="btn mini primary" href="#contact">View Project</a></div></div></article>
+    <article class="glass project reveal"><div class="project-img"><i class="fa-solid fa-microphone-lines"></i></div><div class="project-body"><h3>Python Voice Assistant</h3><p>AI-powered voice assistant with speech recognition, text-to-speech, command processing, web search, application control, weather updates and task automation.</p><div class="tags"><span class="tag">Python</span><span class="tag">OpenAI API</span><span class="tag">SpeechRecognition</span><span class="tag">pyttsx3</span></div><div class="project-actions"><a class="btn mini secondary" href="https://github.com/naveenkumarm200505-max" target="_blank">GitHub</a><a class="btn mini secondary" href="#contact">Live Demo</a><a class="btn mini primary" href="#contact">View Project</a></div></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="experience">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">05 · Learning Path</div><h2>From fundamentals to applied builds.</h2></div><p>Education, certification and project-based learning milestones from the resume.</p></div>
+  <div class="timeline">
+    <div class="event reveal"><span class="dot"></span><div class="glass event-card"><small>2022 — 2025</small><h3>Bachelor of Computer Science</h3><p>Muthayammal College of Arts and Science. Built a foundation in computer science and applied programming.</p></div></div>
+    <div class="event reveal"><span class="dot"></span><div class="glass event-card"><small>DATA SCIENCE CERTIFICATION</small><h3>Nano Degree in Data Science — Imagecon Academy Pvt Ltd</h3><p>Completed industrial projects with daily assessments in Python, SQL and Data Science, applying a systematic approach to real-world data challenges.</p></div></div>
+    <div class="event reveal"><span class="dot"></span><div class="glass event-card"><small>PROJECT DEVELOPMENT</small><h3>Machine Learning &amp; Analytics</h3><p>Developed predictive modeling and business intelligence projects covering preprocessing, model evaluation, KPIs and visual analysis.</p></div></div>
+    <div class="event reveal"><span class="dot"></span><div class="glass event-card"><small>APPLICATION DEVELOPMENT</small><h3>Python Desktop &amp; AI Applications</h3><p>Built a Hospital Management System with Tkinter/SQLite and a Python voice assistant with AI APIs, speech recognition and automation.</p></div></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="resume">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">06 · Resume</div><h2>One page. Full signal.</h2></div><p>Recruiter-ready profile summary with direct access to the uploaded resume PDF.</p></div>
+  <div class="resume-grid">
+    <div class="glass resume-preview reveal"><div class="paper"><h3>NAVEEN KUMAR M</h3><div class="line"></div><p><b>Data Science &amp; Analytics</b> · Python · SQL · Machine Learning · Power BI</p><h4>PROFESSIONAL SUMMARY</h4><p>Aspiring Data Scientist / Junior Python Developer with hands-on experience building end-to-end machine learning, data visualization and desktop applications.</p><h4>TECHNICAL SKILLS</h4><p>Python · SQL · Regression · Classification · Clustering · Power BI · Matplotlib · Pandas · Scikit-learn · Tkinter · SQLite</p><h4>SELECTED PROJECTS</h4><p>Housing Price Prediction · Amazon E-commerce Sales Dashboard · Hospital Management System · Python Voice Assistant</p><h4>EDUCATION</h4><p>Bachelor of Computer Science · Muthayammal College of Arts and Science · 2022–2025</p></div></div>
+    <div class="glass resume-copy reveal"><div class="kicker">Professional Profile</div><h2 style="font-size:32px">Ready to connect.</h2><p>Download the complete resume for education, technical skills, project details and certification information.</p><div class="actions"><a class="btn primary" href="Naveen_Kumar_M_Resume.pdf" download><i class="fa-solid fa-download"></i> Download Resume</a><a class="btn secondary" href="Naveen_Kumar_M_Resume.pdf" target="_blank"><i class="fa-regular fa-eye"></i> View Resume</a></div></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="achievements">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">07 · Achievements</div><h2>What I've built so far.</h2></div><p>Portfolio-level activity metrics shown as presentation counters.</p></div>
+  <div class="achievements">
+    <div class="glass stat reveal"><strong class="counter" data-target="4">0</strong><span>Projects Completed</span></div>
+    <div class="glass stat reveal"><strong class="counter" data-target="8">0</strong><span>ML / AI Models &amp; Workflows</span></div>
+    <div class="glass stat reveal"><strong class="counter" data-target="2">0</strong><span>Dashboard Builds</span></div>
+    <div class="glass stat reveal"><strong class="counter" data-target="13">0</strong><span>Core Technologies</span></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="github">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">08 · GitHub</div><h2>Code, projects, progress.</h2></div><p>Connect directly to the public GitHub profile listed on the resume.</p></div>
+  <div class="github-grid">
+    <div class="glass github-profile reveal"><i class="fa-brands fa-github github-icon"></i><h3>naveenkumarm200505-max</h3><p>Explore project repositories, Python development work, analytics experiments and portfolio code.</p><a class="btn primary" href="https://github.com/naveenkumarm200505-max" target="_blank"><i class="fa-brands fa-github"></i> Open GitHub Profile</a></div>
+    <div class="repo-list">
+      <div class="glass repo reveal"><h4>Housing Price Prediction</h4><p>Regression workflow with preprocessing, feature selection and evaluation.</p><span>Python · Scikit-learn</span></div>
+      <div class="glass repo reveal"><h4>Analytics Studio</h4><p>Streamlit-oriented predictive analytics and visualization workspace.</p><span>Python · Streamlit · Plotly</span></div>
+      <div class="glass repo reveal"><h4>Hospital Management</h4><p>Desktop hospital operations application with GUI and local database.</p><span>Python · Tkinter · SQLite</span></div>
+      <div class="glass repo reveal"><h4>AI Voice Assistant</h4><p>Voice interaction, AI command processing and automation.</p><span>Python · OpenAI API</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="container">
+  <div class="section-head reveal"><div><div class="kicker">09 · Contact</div><h2>Let's build something intelligent.</h2></div><p>For recruiters, hiring managers, collaborations or project discussions.</p></div>
+  <div class="contact-grid">
+    <div class="glass contact-info reveal"><div class="kicker">Get in touch</div><p>I’m open to discussing data science, analytics, Python development and AI application opportunities.</p>
+      <div class="contact-item"><i class="fa-brands fa-linkedin-in"></i><a href="https://linkedin.com/in/naveenkumar-analytics" target="_blank">linkedin.com/in/naveenkumar-analytics</a></div>
+      <div class="contact-item"><i class="fa-brands fa-github"></i><a href="https://github.com/naveenkumarm200505-max" target="_blank">github.com/naveenkumarm200505-max</a></div>
+      <div class="contact-item"><i class="fa-regular fa-envelope"></i><a href="mailto:naveenkumar.m.200505@gmail.com">naveenkumar.m.200505@gmail.com</a></div>
+    </div>
+    <form class="glass form reveal" id="contactForm">
+      <div class="form-grid">
+        <div class="field"><label>NAME</label><input required name="name" placeholder="Your name"></div>
+        <div class="field"><label>EMAIL</label><input required type="email" name="email" placeholder="you@example.com"></div>
+        <div class="field full"><label>SUBJECT</label><input required name="subject" placeholder="Project / opportunity"></div>
+        <div class="field full"><label>MESSAGE</label><textarea required name="message" placeholder="Write your message..."></textarea></div>
+      </div>
+      <button class="btn primary" type="submit"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
+      <div id="formStatus" style="font-size:11px;color:#78dfff;margin-top:10px"></div>
+    </form>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="container footer-inner">
+  <div><div class="footer-title">Naveen Kumar M · Data Science &amp; Analytics</div><div class="copyright">Turning Data Into Intelligent Solutions. © 2026</div></div>
+  <div class="socials"><a href="https://linkedin.com/in/naveenkumar-analytics" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/naveenkumarm200505-max" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="mailto:naveenkumar.m.200505@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></div>
+</div>
+</footer>
+
+<script>
+const menu=document.getElementById('menu'), nav=document.getElementById('navlinks');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');revealObserver.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+function animateCounter(el){
+  const target=parseFloat(el.dataset.target), decimal=el.dataset.decimal?parseInt(el.dataset.decimal):0;
+  const duration=1300,start=performance.now();
+  function tick(now){
+    const p=Math.min((now-start)/duration,1), eased=1-Math.pow(1-p,3);
+    el.textContent=(target*eased).toFixed(decimal)+(decimal?'':'');
+    if(p<1) requestAnimationFrame(tick); else el.textContent=target.toFixed(decimal);
+  } requestAnimationFrame(tick);
+}
+const counterObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);counterObs.unobserve(e.target)}}),{threshold:.4});
+document.querySelectorAll('.counter').forEach(x=>counterObs.observe(x));
+
+const common={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#9fb4c8',font:{size:10}}}},scales:{x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#7289a1',font:{size:9}}},y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#7289a1',font:{size:9}}}}};
+new Chart(document.getElementById('lineChart'),{type:'line',data:{labels:['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00'],datasets:[{label:'Processed',data:[210,340,290,510,460,680,620,810],borderColor:'#29cfff',backgroundColor:'rgba(41,207,255,.09)',fill:true,tension:.4,pointRadius:2}]},options:common});
+new Chart(document.getElementById('doughnutChart'),{type:'doughnut',data:{labels:['Regression','Classification','Clustering','EDA'],datasets:[{data:[30,35,20,15],backgroundColor:['#2188ff','#23d5ff','#6c7cff','#3d536e'],borderColor:'#071222',borderWidth:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#9fb4c8',font:{size:9},padding:12}}},cutout:'68%'}});
+
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=new FormData(e.target), body=`Name: ${f.get('name')}%0AEmail: ${f.get('email')}%0A%0A${f.get('message')}`;
+  const subject=encodeURIComponent(f.get('subject'));
+  window.location.href=`mailto:naveenkumar.m.200505@gmail.com?subject=${subject}&body=${body}`;
+  document.getElementById('formStatus').textContent='Opening your email client…';
+});
+</script>
+</body>
+</html>
